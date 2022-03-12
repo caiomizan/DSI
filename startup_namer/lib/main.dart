@@ -125,20 +125,22 @@ class _RandomWordsState extends State<RandomWords> {
                 _suggestions[index].asPascalCase,
                 style: _biggerFont,
               ),
-              trailing: Icon(
-                alreadySaved ? Icons.favorite : Icons.favorite_border,
-                color: alreadySaved ? Colors.red : null,
-                semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+              trailing: IconButton(
+                icon: Icon(
+                  alreadySaved ? Icons.favorite : Icons.favorite_border,
+                  color: alreadySaved ? Colors.red : null,
+                  semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (alreadySaved) {
+                      _saved.remove(_suggestions[index]);
+                    } else {
+                      _saved.add(_suggestions[index]);
+                    }
+                  });
+                },
               ),
-              onTap: () {
-                setState(() {
-                  if (alreadySaved) {
-                    _saved.remove(_suggestions[index]);
-                  } else {
-                    _saved.add(_suggestions[index]);
-                  }
-                });
-              },
             );
           },
         );
@@ -159,25 +161,27 @@ class _RandomWordsState extends State<RandomWords> {
 
             return Card(
               child: ListTile(
-                title: Text(
-                  _suggestions[index].asPascalCase,
-                  style: _biggerFont,
-                ),
-                trailing: Icon(
-                  alreadySaved ? Icons.favorite : Icons.favorite_border,
-                  color: alreadySaved ? Colors.red : null,
-                  semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
-                ),
-                onTap: () {
-                  setState(() {
-                    if (alreadySaved) {
-                      _saved.remove(_suggestions[index]);
-                    } else {
-                      _saved.add(_suggestions[index]);
-                    }
-                  });
-                },
-              ),
+                  title: Text(
+                    _suggestions[index].asPascalCase,
+                    style: _biggerFont,
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(
+                      alreadySaved ? Icons.favorite : Icons.favorite_border,
+                      color: alreadySaved ? Colors.red : null,
+                      semanticLabel:
+                          alreadySaved ? 'Remove from saved' : 'Save',
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (alreadySaved) {
+                          _saved.remove(_suggestions[index]);
+                        } else {
+                          _saved.add(_suggestions[index]);
+                        }
+                      });
+                    },
+                  )),
             );
           },
         );

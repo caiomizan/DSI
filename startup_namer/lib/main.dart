@@ -37,7 +37,7 @@ class _RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
   final _saved = <WordPair>{};
   int colum = 1;
-  double aspectRatio = 10.0;
+  double aspectRatio = 7.0;
 
   void _pushSaved() {
     Navigator.of(context).push(
@@ -75,7 +75,7 @@ class _RandomWordsState extends State<RandomWords> {
     setState(() {
       if (colum == 2) {
         colum = 1;
-        aspectRatio = 10.0;
+        aspectRatio = 7.0;
       } else {
         colum = 2;
         aspectRatio = 1.5;
